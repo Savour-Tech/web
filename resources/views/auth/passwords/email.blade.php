@@ -1,47 +1,56 @@
-@extends('layouts.app')
+@php
+
+    $themeConfig['body_classes'] = 'page-auth page-login card-no-border';
+    $themeConfig['show_header'] = true;
+
+@endphp
+
+@extends('auth.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url({{ asset('images/auth/login-register.jpg') }});">
+            <div class="login-box card">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <div class="text-center logo">
+                        <img src="{{ asset('images/auth/logo-icon.png') }}" class="img-circle">
+                    </div>
+                    <form class="form-horizontal form-material" method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <a href="javascript:void(0)" class="close">
+                            <i class="fa fa-close">&nbsp;</i>
+                        </a>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <h3>Recover Password</h3>
+                                <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                        <div class="form-group ">
+                            <div class="col-xs-12 {{ $errors->has('email') ? 'has-danger' : '' }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail') }}" required>
+                                    @component('auth.components.message_input', ['errors' => $errors, 'field' => 'email'])@endcomponent
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary btn-lg btn-block btn-loading text-uppercase waves-effect waves-light" type="submit">
+                                    Reset
+                                    <i class="fa fa-spinner fa-spin"></i>
                                 </button>
                             </div>
                         </div>
+
+                        <div class="text-center text-danger form-error"> </div>
                     </form>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection
