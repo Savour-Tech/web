@@ -10,13 +10,16 @@ class User extends Authenticatable
 {
     use Image, Notifiable;
 
+    const ROLE_CLIENT = 'client';
+    const ROLE_CATERER = 'caterer';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'username', 'email', 'phone', 'sponsor_id', 'password', 
+        'first_name', 'last_name', 'username', 'email', 'phone', 'role', 'password', 
     ];
 
     protected static $imagePath = '/app-img/users';
@@ -30,16 +33,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function getAge()
-    {
-        return floor((strtotime('now') - strtotime($this->age)) / 31556926);
-    }
-
-    public function getRegisterUrl()
-    {
-        return url('/register/'.$this->username);
-    }
 
     public function getFullname()
     {

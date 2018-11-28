@@ -16,14 +16,12 @@
         <div class="login-register register" style="background-image:url({{ asset('images/auth/login-register.jpg') }});">
             <div class="login-box card">
                 <div class="card-body">
-                    <div class="text-center logo">
-                        <img src="{{ asset('images/logo-icon.png') }}">
-                    </div>
+                
                     
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" class="form-horizontal form-material">
                         @csrf
 
-                        <input type="hidden" name="role" value="{{ App\User::ROLE_CLIENT }}">
+                        <input type="hidden" name="role" value="{{ App\User::ROLE_CATERER }}">
 
                         <h3 class="text-center m-b-20">{{ __('Register') }}</h3>
 

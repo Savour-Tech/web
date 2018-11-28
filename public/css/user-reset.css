@@ -1,3 +1,13 @@
+/* 
+* theme overide
+*/
+.topbar .navbar-collapse{
+  border-bottom: none;
+}
+
+/* 
+* mixins
+*/
 .btn-loading i{
     display: none;
 }

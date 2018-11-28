@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
+@import url(../icons/font-awesome/css/font-awesome.min.css);
+@import url(../icons/simple-line-icons/css/simple-line-icons.css);
+@import url(../icons/weather-icons/css/weather-icons.min.css);
+@import url(../icons/themify-icons/themify-icons.css);
+@import url(../icons/flag-icon-css/flag-icon.min.css);
+@import url(../icons/material-design-iconic-font/css/materialdesignicons.min.css);
+
+/*******************
+Login register and recover password Page
+******************/
+.login-register {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100%;
+    width: 100%;
+    padding: 10% 0;
+    position: absolute;
+}
+.login-register.register {
+    padding: 5% 0;
+}
+.login-register .form-group{
+    margin-bottom: 5px;
+}
+.login-box {
+    width: 400px;
+    margin: 0 auto;
+    margin-left: 60%;
+}
+
+.login-register.register .login-box {
+    width: 450px;
+}
+.login-box .logo{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.login-box .logo img{
+    width: 70px;
+    height: 70px;
+}
+.login-box .footer {
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}
+.login-box .social {
+    display: block;
+    margin-bottom: 30px;
+}
+#recoverform {
+    display: none;
+}
+.login-sidebar {
+    padding: 0px;
+    margin-top: 0px;
+}
+.login-sidebar .login-box {
+    right: 0px;
+    position: absolute;
+    height: 100%;
+}

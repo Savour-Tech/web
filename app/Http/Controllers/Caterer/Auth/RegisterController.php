@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Caterer\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -68,7 +68,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('caterer.auth.register');
     }
 
     /**

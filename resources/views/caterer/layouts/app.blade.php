@@ -1,10 +1,7 @@
 @php 
     if(empty($themeConfig))
         $themeConfig = [];
-
-    //defaults
-    $themeConfig['show_footer'] = isset($themeConfig['show_footer'])? $themeConfig['show_footer']: true;
-    $themeConfig['body_classes'] = isset($themeConfig['body_classes'])? $themeConfig['body_classes']: true;
+    
 @endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
@@ -20,26 +17,40 @@
 
     <link href="{{ asset('favicon.ico') }}" rel="icon">
     <!-- plugings -->
-
+    <link href="{{ asset('plugins/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/hover.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/auth.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/user-reset.css') }}" rel="stylesheet" type="text/css" />
     
+    <script type="text/javascript">
+        const BASE_URL = @json( config('app.url') );
+    </script>
 </head>
-<body class="skin-default {{ $themeConfig['body_classes'] }}">
+<body class="skin-default-dark single-column fix-sidebar {{ theme_config($themeConfig, 'body_classes') }}">
 
-    @include('layouts.preloader')
+    @include('caterer.layouts.preloader')
 
-    @include('auth.layouts.header')
+    <div id="main-wrapper">
 
-    @yield('content')
-    
-    @if ($themeConfig['show_footer'])
-        @include('auth.layouts.footer')
-    @endif
+        @if (theme_config($themeConfig, 'show_header'))
+            @include('caterer.layouts.header')
+        @endif
+
+        @if (theme_config($themeConfig, 'show_sidebar'))
+            @include('caterer.layouts.sidebar')
+        @endif
+
+        @yield('content')
+        
+        @if (theme_config($themeConfig, 'show_footer'))
+            @include('caterer.layouts.footer')
+        @endif
+
+    </div>
 
 
     <!-- Scripts -->
@@ -47,6 +58,7 @@
     <script src="{{ asset('plugins/popper/popper.min.js') }}" ></script>
     <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('plugins/sticky-kit-master/dist/sticky-kit.min.js') }}" ></script>
+    <script src="{{ asset('plugins/toast-master/js/jquery.toast.js') }}"></script>
 
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>

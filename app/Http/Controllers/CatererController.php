@@ -6,7 +6,7 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CatererController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,11 +26,7 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-
-        if($user->role === User::ROLE_CATERER )
-             return redirect('caterer/home');
-
-
-        return view('home');
+        
+        return view('caterer.home');
     }
 }
