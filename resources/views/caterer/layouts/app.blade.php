@@ -23,14 +23,20 @@
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/hover.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/spinners.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/user.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Theme -->
+    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
+
+    <!-- custom -->
     <link href="{{ asset('css/user-reset.css') }}" rel="stylesheet" type="text/css" />
     
     <script type="text/javascript">
         const BASE_URL = @json( config('app.url') );
     </script>
 </head>
-<body class="skin-default-dark single-column fix-sidebar {{ theme_config($themeConfig, 'body_classes') }}">
+<body class="skin-default-dark fix-sidebar {{ theme_config($themeConfig, 'body_classes') }}">
 
     @include('caterer.layouts.preloader')
 
@@ -44,14 +50,39 @@
             @include('caterer.layouts.sidebar')
         @endif
 
-        @yield('content')
+        <div class="status-wrapper">
+            @if (session('success'))
+                @component('caterer.layouts.components.status', ['type' => 'success', 'message' => Session::get('success')])@endcomponent
+            @endif
+
+            @if (session('error'))
+                @component('caterer.layouts.components.status', ['type' => 'danger', 'message' => Session::get('error')])@endcomponent
+            @endif
+        </div>
+        
+        <div class="border-top border-primary">
+            <div class="page-wrapper">
+                @yield('content')
+
+                <div>
+                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10">
+                        <i class="mdi mdi-message text-white"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+
+            @include('caterer.layouts.sidebar_right')
+        </div>
+
+        
         
         @if (theme_config($themeConfig, 'show_footer'))
             @include('caterer.layouts.footer')
         @endif
 
     </div>
-
 
     <!-- Scripts -->
     <script src="{{ asset('plugins/jquery/jquery-3.2.1.min.js') }}"></script>
@@ -64,6 +95,30 @@
     <script src="{{ asset('js/waves.js') }}"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/user.js') }}"></script>
+    <script src="{{ asset('js/sidebarmenu.js') }}"></script>
+
+    <script src="{{ asset('js/caterer.js') }}"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            @if( Session::has( 'status' ))
+
+                var message = @json(Session::get( 'status' ));
+
+                $.toast({
+                    heading: 'Info',
+                    text: message,
+                    position: 'bottom-left',
+                    loaderBg:'#ff6849',
+                    icon: 'info',
+                    hideAfter: 3000, 
+                    stack: 6
+                  });
+            @endif
+
+        });
+    </script>
     
 </body>
 </html>

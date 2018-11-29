@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Chef;
+use App\Vendor;
+use App\EventCaterer;
 use App\Traits\Image;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,6 +40,48 @@ class User extends Authenticatable
     public function getFullname()
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    public function isCaterer()
+    {
+        return ($this->role === self::ROLE_CATERER);
+    }
+
+
+    public function isChef()
+    {
+        if(!$this->isCaterer())
+            return false;
+
+        if(Chef::where('user_id', $this->id)->count() < 1)
+            return false;
+
+        return true;
+
+    }
+
+    public function isEventCaterer()
+    {
+        if(!$this->isCaterer())
+            return false;
+
+        if(EventCaterer::where('user_id', $this->id)->count() < 1)
+            return false;
+
+        return true;
+
+    }
+
+    public function isVendor()
+    {
+        if(!$this->isCaterer())
+            return false;
+
+        if(Vendor::where('user_id', $this->id)->count() < 1)
+            return false;
+
+        return true;
+
     }
 
 }

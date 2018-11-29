@@ -36,3 +36,5 @@ Route::get('caterer/register', 'Caterer\Auth\RegisterController@showRegistration
 Route::post('caterer/register', 'Caterer\Auth\RegisterController@register')->name('register');
 
 Route::get('/caterer/home', 'CatererController@index')->name('home');
+Route::get('/caterer/profile', 'Caterer\ProfileController@index');
+Route::get('/caterer/add-category', 'CatererController@register');

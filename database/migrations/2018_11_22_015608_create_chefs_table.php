@@ -16,7 +16,7 @@ class CreateChefsTable extends Migration
         Schema::create('chefs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('cover');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

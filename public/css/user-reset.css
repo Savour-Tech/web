@@ -1,8 +1,71 @@
 /* 
 * theme overide
 */
+.no-sidebar .page-wrapper{
+      margin-left: 0px !important;
+}
+
+.status-wrapper {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+  .status-wrapper {
+    margin-left: 240px; } }
+
+@media (max-width: 1023px) {
+  .status-wrapper {
+    margin-left: 70px;
+    -webkit-transition: 0.2s ease-in;
+    -o-transition: 0.2s ease-in;
+    transition: 0.2s ease-in; }}
+
 .topbar .navbar-collapse{
   border-bottom: none;
+}
+
+.topbar .profile-text {
+    white-space: nowrap;
+    padding-left: 15px;
+    border-left: 1px solid rgba(120, 130, 140, 0.13); 
+}
+
+.footer{
+    height: 70px;
+}
+
+.topbar {
+    background: #fff;
+}
+
+.topbar .navbar-light .navbar-nav .nav-item > a.nav-link {
+    color: #a6b7bf !important;
+}
+
+.topbar .navbar-light .navbar-nav .nav-item > a.nav-link:hover, .topbar .navbar-light .navbar-nav .nav-item > a.nav-link:focus {
+    color: rgba(0,0,0, 0.8) !important;
+}
+
+.left-sidebar{
+  background-color: transparent;
+}
+
+.sidebar-nav ul li.user-profile a {
+    /*text-align: center;*/
+}
+
+.sidebar-nav .user-profile > a img {
+    /*width: 62px;
+    display: inline-block;
+    margin-right: 0px;
+    margin-bottom: 5px;*/
+}
+
+.right-side-toggle i {
+    animation: none;
+    position: absolute;
+    top: 18px;
+    left: 18px;
 }
 
 /* 
