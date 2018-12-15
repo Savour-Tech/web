@@ -113,6 +113,24 @@
     background-color: rgba(255,255,255,.7);
 }
 
+.title-underline{
+  position: relative;
+}
+
+.title-underline:after{
+  content: " ";
+  width: 50px;
+  height: 5px;
+  position: absolute;
+  bottom: -5px;
+  left: 2px;
+  background-color: #000;
+}
+
+.title-underline.title-underline-light:after{
+  background-color: #fff;
+}
+
 .vertical-box{
   display: table;
   width: 100%;
@@ -127,4 +145,26 @@
 
 .datepicker{
   z-index: 99 !important;
+}
+
+.rating-widget {
+  
+}
+.rating-widget .single-rating {
+  color: #F5C60D;
+}
+.rating-widget .single-rating + .single-rating {
+  margin-left: 5px;
+}
+
+.no-toggle-arrow:after{
+  content: none !important;
+}
+
+/*
+* PAGE SPECIFICS
+*/
+
+.theme-caterer.page-profile .rating-display h1{
+  font-size: 70px;
 }

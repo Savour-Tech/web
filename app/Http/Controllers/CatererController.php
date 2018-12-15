@@ -31,12 +31,17 @@ class CatererController extends Controller
     {
         $user = Auth::user();
 
-        if(!$user->isChef() && !$user->isEventCaterer() && !$user->isVendor())
-            return view('caterer.register');
+        if(caterer_has_type($user))
+            return redirect(url('caterer/category'));
 
         return view('caterer.home');
     }
 
+
+    public function showRegistrationForm(Request $request)
+    {
+        return view('caterer.register');   
+    }
     /**
      * Add a caterer type to caterer.
      *
@@ -52,14 +57,19 @@ class CatererController extends Controller
 
         if($type === Chef::CATERER_TYPE){
             $model = Chef::updateOrCreate(['user_id' => $user->id]);
-        }else{
+        }else if($type === Vendor::CATERER_TYPE){
+            $model = Vendor::updateOrCreate(['user_id' => $user->id]);
+        }else if($type === EventCaterer::CATERER_TYPE){
+            $model = EventCaterer::updateOrCreate(['user_id' => $user->id]);
+        }else {
             throw new NotFoundHttpException('calm down...still in progress');
         }
+        
 
         if(!$model->save()){
             return redirect(url('caterer/home'))->with("error", "Unable to make selection");
         }
 
-        return redirect(url('caterer/home'))->with("success", "congratulations, you are now a ". ucfirst($type));
+        return redirect(url('caterer/home'))->with("success", "congratulations, you are now a(n) ". ucfirst($type));
     }
 }

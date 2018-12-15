@@ -9,4 +9,9 @@ class Chef extends Model
     const CATERER_TYPE = 'chef';
 
     protected $fillable = ['user_id'];
+
+    public function menus()
+    {
+       return $this->hasMany('App\ChefMenu');
+    }
 }

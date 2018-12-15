@@ -18,6 +18,8 @@
     <link href="{{ asset('favicon.ico') }}" rel="icon">
     <!-- plugings -->
     <link href="{{ asset('plugins/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Styles -->
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet"/>
@@ -36,7 +38,7 @@
         const BASE_URL = @json( config('app.url') );
     </script>
 </head>
-<body class="skin-default-dark fix-sidebar {{ theme_config($themeConfig, 'body_classes') }}">
+<body class="skin-default-dark fix-sidebar theme-caterer {{ theme_config($themeConfig, 'body_classes') }}">
 
     @include('caterer.layouts.preloader')
 
@@ -90,6 +92,10 @@
     <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('plugins/sticky-kit-master/dist/sticky-kit.min.js') }}" ></script>
     <script src="{{ asset('plugins/toast-master/js/jquery.toast.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.js') }}"></script>
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
 
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>
@@ -118,6 +124,8 @@
             @endif
 
         });
+
+        //CKEDITOR.replace( '.ckeditor' );
     </script>
     
 </body>

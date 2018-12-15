@@ -24,6 +24,26 @@
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
+
+                        @if( Auth::user()->isChef())
+                            <li class="{{Request::is('caterer/chef/*') ? 'active' : ''}}"> 
+                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{Request::is('caterer/chef/*') ? 'true' : 'false'}}">
+                                    <i class="mdi mdi-silverware"></i>
+                                    <span class="hide-menu">Chef</span>
+                                </a>
+
+                                <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a href="{{url('caterer/chef/cover')}}" class="{{Request::is('caterer/chef/cover') ? 'active' : ''}}">Cover Letter</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('caterer/chef/menu')}}" class="{{Request::is('caterer/chef/menu') ? 'active' : ''}}">Menu</a>
+                                    </li>
+                                    <li><a href="{{url('caterer/chef/portfolio')}}">Portfolio</a></li>
+                                </ul>
+                            </li>
+                        @endif
+
                         <li> 
                             <a class="waves-effect waves-dark" href="#" aria-expanded="false">
                                 <i class="mdi mdi-bullseye"></i>

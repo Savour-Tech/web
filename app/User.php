@@ -42,9 +42,19 @@ class User extends Authenticatable
         return $this->first_name.' '.$this->last_name;
     }
 
+    public function ratings()
+    {
+        return $this->hasMany('App\Rating');
+    }
+
     public function isCaterer()
     {
         return ($this->role === self::ROLE_CATERER);
+    }
+
+    public function caterer_ratings()
+    {
+        return $this->hasMany('App\Rating', 'caterer_id', 'id');
     }
 
 

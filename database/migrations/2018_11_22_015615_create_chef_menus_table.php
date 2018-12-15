@@ -16,6 +16,11 @@ class CreateChefMenusTable extends Migration
         Schema::create('chef_menus', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('chef_id');
+            $table->string('name');
+            $table->string('description');
+            $table->mediumText('ingredients')->nullable();
+            $table->integer('cook_time')->nullable();
+            $table->integer('servings')->nullable();
             $table->timestamps();
         });
     }

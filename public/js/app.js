@@ -1,8 +1,18 @@
 $(function() {
 
 	"use strict";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 	
 	$(".preloader").fadeOut();
+
+    $(".datepicker").datepicker({
+      autoclose: true,
+      format: 'yyyy-mm-dd'
+    });
 
     $('.action.action-confirm').on('click', function (e) {
         e.preventDefault();

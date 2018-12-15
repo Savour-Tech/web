@@ -30,11 +30,24 @@ Route::get('/home', 'UserController@index')->name('home');
 
 /*
 *CATERER
-
 */
-Route::get('caterer/register', 'Caterer\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('caterer/register', 'Caterer\Auth\RegisterController@register')->name('register');
+Route::prefix('caterer')->group(function() {
+	Route::get('/register', 'Caterer\Auth\RegisterController@showRegistrationForm')->name('register');
+	Route::post('/register', 'Caterer\Auth\RegisterController@register')->name('register');
 
-Route::get('/caterer/home', 'CatererController@index')->name('home');
-Route::get('/caterer/profile', 'Caterer\ProfileController@index');
-Route::get('/caterer/add-category', 'CatererController@register');
+	Route::get('/home', 'CatererController@index')->name('home');
+
+	Route::get('/profile', 'Caterer\ProfileController@index');
+	Route::post('/profile', 'Caterer\ProfileController@update');
+
+	Route::get('/category', 'CatererController@showRegistrationForm');
+	Route::get('/add-category', 'CatererController@register');
+
+
+	Route::get('/chef', 'Caterer\ChefController@index');
+	Route::get('/chef/menu', 'Caterer\ChefController@menu');
+	Route::post('/chef/menu', 'Caterer\ChefController@menuStore');
+	Route::get('/chef/cover', 'Caterer\ChefController@cover');
+	Route::post('/chef/cover', 'Caterer\ChefController@coverStore');
+});
+	

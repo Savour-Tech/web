@@ -7,78 +7,39 @@ use Illuminate\Http\Request;
 
 class ChefController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the user profile.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        if(caterer_has_type($user))
+            return redirect(url('caterer/category'));
+
+        //header("Location: http://google.com");
+
+        return view('caterer.profile', [
+            'tab' => $request->input('tab'),
+            'rating' => Rating::get_caterer_rating($user->id),
+            'reviews' => Rating::where('caterer_id', $user->id)->get(),
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Chef  $chef
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chef $chef)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Chef  $chef
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chef $chef)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chef  $chef
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chef $chef)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Chef  $chef
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chef $chef)
+    public function cover()
     {
         //
     }

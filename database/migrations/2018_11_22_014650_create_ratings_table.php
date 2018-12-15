@@ -17,7 +17,7 @@ class CreateRatingsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('caterer_id');
-            $table->integer('rating');
+            $table->tinyInteger('rating');
             $table->string('review')->nullable();
             $table->timestamps();
         });

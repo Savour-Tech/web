@@ -4828,7 +4828,7 @@ File: scss
     padding: 15px; }
     .comment-widgets .comment-row:last-child {
       border-bottom: 0px; }
-    .comment-widgets .comment-row:hover, .comment-widgets .comment-row.active {
+    .comment-widgets .comment-row.active {
       background: rgba(0, 0, 0, 0.02); }
 
 .comment-text {

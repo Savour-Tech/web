@@ -53,6 +53,8 @@
     <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('plugins/sticky-kit-master/dist/sticky-kit.min.js') }}" ></script>
     <script src="{{ asset('plugins/toast-master/js/jquery.toast.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.js') }}"></script>
 
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>
