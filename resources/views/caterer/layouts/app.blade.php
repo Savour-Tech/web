@@ -17,6 +17,7 @@
 
     <link href="{{ asset('favicon.ico') }}" rel="icon">
     <!-- plugings -->
+    <link href="{{ asset('plugins/sweetalert/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
@@ -26,13 +27,13 @@
     <link href="{{ asset('css/hover.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/spinners.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/user.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/caterer.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Theme -->
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 
     <!-- custom -->
-    <link href="{{ asset('css/user-reset.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/caterer-reset.css') }}" rel="stylesheet" type="text/css" />
     
     <script type="text/javascript">
         const BASE_URL = @json( config('app.url') );
@@ -91,20 +92,21 @@
     <script src="{{ asset('plugins/popper/popper.min.js') }}" ></script>
     <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('plugins/sticky-kit-master/dist/sticky-kit.min.js') }}" ></script>
+    <script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('plugins/toast-master/js/jquery.toast.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/moment.js') }}"></script>
     <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/datatables.min.js') }}"></script>
 
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/user.js') }}"></script>
-    <script src="{{ asset('js/sidebarmenu.js') }}"></script>
-
     <script src="{{ asset('js/caterer.js') }}"></script>
+
+    <script src="{{ asset('js/caterer-custom.js') }}"></script>
     <script type="text/javascript">
         $(function() {
 

@@ -14,4 +14,9 @@ class Chef extends Model
     {
        return $this->hasMany('App\ChefMenu');
     }
+
+    public function portfolios()
+    {
+       return $this->hasMany('App\ChefPortfolio');
+    }
 }

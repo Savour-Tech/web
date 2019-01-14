@@ -16,6 +16,10 @@ class CreateChefPortfoliosTable extends Migration
         Schema::create('chef_portfolios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('chef_id');
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->mediumText('tags')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -12,8 +12,10 @@
 <div class="container-fluid">
     
     @component('caterer.components.breadcrumb', [
-        'title' => 'Menu', 
-        'crumbs' => [],
+        'title' => 'Edit Menu', 
+        'crumbs' => [
+            'Menu' => url('caterer/chef/menu')
+        ],
     ])@endcomponent
     <!-- ============================================================== -->
     <!-- Start Page Content -->
@@ -25,13 +27,11 @@
             <div class="card">
         
                 <div class="card-body">
-                    <h4 class="card-title">Add new Menu</h4>
+                    <h4 class="card-title">Edit Menu</h4>
                     <h6 class="card-subtitle">lorem ipsium valor et dolor merius etim</h6>
                     <hr />
-                    <form class="form-material m-t-40" method="post" action="{{url('caterer/chef/menu/create')}}" onkeypress="return event.keyCode != 13;">
+                    <form class="form-material m-t-40" method="post" action="{{url('caterer/chef/menu/update/'.$model->id)}}" onkeypress="return event.keyCode != 13;">
                         @csrf
-                        <input type="hidden" name="id" value="{{$chef->id}}">
-
 
                         @component('caterer.chef.components.menu_input', ['text' => 'Meal Name', 'field' => 'name', 'model' => $model, 'errors' => $errors])@endcomponent
 

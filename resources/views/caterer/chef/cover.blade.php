@@ -1,45 +1,27 @@
 @php
-    $themeConfig['body_classes'] = 'page-profile';
+    $themeConfig['body_classes'] = 'page-chef page-cover';
 
 @endphp
 
 @extends('caterer.layouts.app')
 
 @section('content')
-
-<style type="text/css">
-    .card-hd-bg{
-        height: 250px;
-        background-color: #f9ada3;
-    }
-
-    .card-hd-bg .cover-img{
-        position: absolute;
-        top: 120px;
-        right: 20px;
-    }
-
-    .card-hd-bg .cover-img img{
-        width: 200px;
-    }
-
-    .cover-share a{
-        margin-right: 10px;
-    }
-</style>
-
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
 	
+    @component('caterer.components.breadcrumb', [
+        'title' => 'Cover Letter', 
+        'crumbs' => [],
+    ])@endcomponent
 
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
     <!-- Row -->
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-9">
             <div class="card">
                 <div class="card-body p-0">
                     <div class="card-hd-bg p-3">
@@ -102,6 +84,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-sm-3">
+            @include('caterer.chef._aside')
         </div>
     </div>
     <!-- Row -->

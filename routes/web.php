@@ -45,10 +45,22 @@ Route::prefix('caterer')->group(function() {
 
 
 	Route::get('/chef', 'Caterer\ChefController@index');
+	Route::get('/chef/cover', 'Caterer\ChefController@cover');
+	Route::post('/chef/cover', 'Caterer\ChefController@coverStore');
+
 	Route::get('/chef/menu', 'Caterer\ChefController@menu');
 	Route::get('/chef/menu/create', 'Caterer\ChefController@menuCreate');
 	Route::post('/chef/menu/create', 'Caterer\ChefController@menuStore');
-	Route::get('/chef/cover', 'Caterer\ChefController@cover');
-	Route::post('/chef/cover', 'Caterer\ChefController@coverStore');
+	Route::get('/chef/menu/update/{id}', 'Caterer\ChefController@menuEdit');
+	Route::post('/chef/menu/update/{id}', 'Caterer\ChefController@menuUpdate');
+	Route::get('/chef/menu/delete/{id}', 'Caterer\ChefController@menuDestroy');
+
+	Route::get('/chef/portfolio', 'Caterer\ChefController@portfolio');
+	Route::get('/chef/portfolio/create', 'Caterer\ChefController@portfolioCreate');
+	Route::post('/chef/portfolio/create', 'Caterer\ChefController@portfolioStore');
+	Route::get('/chef/portfolio/update/{id}', 'Caterer\ChefController@portfolioEdit');
+	Route::post('/chef/portfolio/update/{id}', 'Caterer\ChefController@portfolioUpdate');
+	Route::get('/chef/portfolio/delete/{id}', 'Caterer\ChefController@portfolioDestroy');
+
 });
 	

@@ -39,7 +39,7 @@
                                     <li>
                                         <a href="{{url('caterer/chef/menu')}}" class="{{Request::is('caterer/chef/menu') ? 'active' : ''}}">Menu</a>
                                     </li>
-                                    <li><a href="{{url('caterer/chef/portfolio')}}">Portfolio</a></li>
+                                    <li><a href="{{url('caterer/chef/portfolio')}}" class="{{Request::is('caterer/chef/portfolio') ? 'active' : ''}}">Portfolio</a></li>
                                 </ul>
                             </li>
                         @endif

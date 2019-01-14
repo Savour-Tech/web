@@ -63,7 +63,7 @@
         swal({   
             title: "Govinda!",   
             text: "Recently joined twitter",   
-            imageUrl: "../assets/images/users/agent2.jpg" 
+            imageUrl: "../assets/images/users/1.jpg" 
         });
     });
 
