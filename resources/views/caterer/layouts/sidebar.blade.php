@@ -44,6 +44,25 @@
                             </li>
                         @endif
 
+                        @if( Auth::user()->isEventCaterer())
+                            <li class="{{Request::is('caterer/event-caterer/*') ? 'active' : ''}}"> 
+                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{Request::is('caterer/event-caterer/*') ? 'true' : 'false'}}">
+                                    <i class="mdi mdi-silverware"></i>
+                                    <span class="hide-menu">Event Caterer</span>
+                                </a>
+
+                                <ul aria-expanded="false" class="collapse">
+                                    <li>
+                                        <a href="{{url('caterer/event-caterer/cover')}}" class="{{Request::is('caterer/event-caterer/cover') ? 'active' : ''}}">Cover Letter</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('caterer/event-caterer/menu')}}" class="{{Request::is('caterer/event-caterer/menu') ? 'active' : ''}}">Menu</a>
+                                    </li>
+                                    <li><a href="{{url('caterer/event-caterer/portfolio')}}" class="{{Request::is('caterer/event-caterer/portfolio') ? 'active' : ''}}">Portfolio</a></li>
+                                </ul>
+                            </li>
+                        @endif
+
                         <li> 
                             <a class="waves-effect waves-dark" href="#" aria-expanded="false">
                                 <i class="mdi mdi-bullseye"></i>

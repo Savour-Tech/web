@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventCaterersTable extends Migration
+class CreateEventCatererPortfoliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateEventCaterersTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_caterers', function (Blueprint $table) {
+        Schema::create('event_caterer_portfolios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->longText('cover')->nullable();
+            $table->integer('event_caterer_id');
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->mediumText('tags')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateEventCaterersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_caterers');
+        Schema::dropIfExists('event_caterer_portfolios');
     }
 }

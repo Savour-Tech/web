@@ -194,21 +194,21 @@
 }
 
 
-.theme-caterer.page-chef .card-hd-bg{
+.theme-caterer.page-cover .card-hd-bg{
     height: 250px;
     background-color: #f9ada3;
 }
 
-.theme-caterer.page-chef .card-hd-bg .cover-img{
+.theme-caterer.page-cover .card-hd-bg .cover-img{
     position: absolute;
     top: 120px;
     right: 20px;
 }
 
-.theme-caterer.page-chef .card-hd-bg .cover-img img{
+.theme-caterer.page-cover .card-hd-bg .cover-img img{
     width: 200px;
 }
 
-.theme-caterer.page-chef .cover-share a{
+.theme-caterer.page-cover .cover-share a{
     margin-right: 10px;
 }
