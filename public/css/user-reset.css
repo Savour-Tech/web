@@ -161,6 +161,13 @@
   content: none !important;
 }
 
+.ad-box{
+  min-height: 200px;
+}
+
+.ad-box.long{
+  min-height: 400px;
+}
 /*
 * PAGE SPECIFICS
 */

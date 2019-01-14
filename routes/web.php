@@ -46,7 +46,8 @@ Route::prefix('caterer')->group(function() {
 
 	Route::get('/chef', 'Caterer\ChefController@index');
 	Route::get('/chef/menu', 'Caterer\ChefController@menu');
-	Route::post('/chef/menu', 'Caterer\ChefController@menuStore');
+	Route::get('/chef/menu/create', 'Caterer\ChefController@menuCreate');
+	Route::post('/chef/menu/create', 'Caterer\ChefController@menuStore');
 	Route::get('/chef/cover', 'Caterer\ChefController@cover');
 	Route::post('/chef/cover', 'Caterer\ChefController@coverStore');
 });

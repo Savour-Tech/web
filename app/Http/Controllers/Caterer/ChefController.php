@@ -54,12 +54,70 @@ class ChefController extends Controller
             return redirect(url('caterer/category'))->with('status', 'you are not a chef');
 
         $chef = Chef::where('user_id', $user->id)->first();
-        $model = new ChefMenu();
 
         return view('caterer.chef.menu', [
             'chef' => $chef,
+        ]);
+
+    }
+
+    public function menuCreate()
+    {
+        $user = Auth::user();
+
+        if(caterer_has_type($user))
+            return redirect(url('caterer/category'));
+
+        if(!$user->isChef())
+            return redirect(url('caterer/category'))->with('status', 'you are not a chef');
+
+        $chef = Chef::where('user_id', $user->id)->first();
+        $model = new ChefMenu();
+
+        return view('caterer.chef.menu_create', [
+            'chef' => $chef,
             'model' => $model
         ]);
+
+    }
+
+    public function menuStore(Request $request)
+    {
+        try{
+
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'ingredients' => 'required|string',
+                'cook_time' => 'required|string',
+                'servings' => 'required|string'
+            ]);
+
+            if ($validator->fails()) {
+                throw new Exception($validator->errors(), 1);
+            }
+
+            $user = Auth::user();
+
+            if(caterer_has_type($user))
+                return redirect(url('caterer/category'));
+
+            if(!$user->isChef())
+                return redirect(url('caterer/category'))->with('status', 'you are not a chef');
+
+            $id = $request->input('id');
+
+            $chef = Chef::find($id);
+            $chef->cover = $request->input('cover');
+
+            $chef->save();
+
+            return redirect(url('caterer/chef/cover'))->with("status", "Data added succesfuly");
+
+        }catch(Exception $e){
+            return redirect(url('caterer/chef/cover'))->with("error", $e->getMessage());
+        }
 
     }
 
